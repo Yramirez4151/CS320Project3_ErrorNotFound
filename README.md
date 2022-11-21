@@ -1,12 +1,12 @@
-## ErrorNotFound Student Tracking Database
+# ErrorNotFound Student Tracking Database
 
 
-#  Project's Title
+##  Project's Title
 
-# Project Description
+## Project Description
 
-# How to Install and Run the Project
+## How to Install and Run the Project
 
-# How to Use the Project
+## How to Use the Project
 
-# Future Goals
+## Future Goals
