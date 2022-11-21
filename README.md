@@ -1,4 +1,5 @@
 # ErrorNotFound Student Tracking Database
+### Joshua Garcia, Peiqian Chen, Rogelio Huico, and Yesenia Ramirez
 
 
 ##  Project's Title
