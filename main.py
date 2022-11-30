@@ -1,16 +1,21 @@
-# This is a sample Python script.
+import psycopg2
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+con = psycopg2.connect(
+    port = "3200",
+    host="localhost",
+    database="template1",
+    user="yesenia",
+    password="")
 
+cur = con.cursor()
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+cur.execute("CREATE TABLE Persons ( PersonID int, LastName varchar(255), FirstName varchar(255), Address varchar(255), City varchar(255));")
 
+cur.execute("SELECT * FROM Persons;")
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+cur.execute("INSERT INTO Persons VALUES ( 1, 'Huico', 'Josh', '1619 W North St', 'Chicago');")
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+print(cur.execute("SELECT * FROM Persons;"))
+
+print(con.closed)
+con.close()
