@@ -1,24 +1,4 @@
 import psycopg2
-#from config import config
-
-# con = psycopg2.connect(
-#     port = "3200",
-#     host="139.147.200.35",
-#     database="template1",
-#     user="yesenia",
-#     password="")
-
-# cur = con.cursor()
-
-# cur.execute("CREATE TABLE Persons ( PersonID int );")
-
-# cur.execute("SELECT * FROM Persons;")
-
-# cur.execute("INSERT INTO Persons VALUES ( 1 );")
-
-# cur.execute("SELECT * FROM Persons;")
-
-
 
 def create_tables():
     """ create tables in the PostgreSQL database"""
@@ -122,7 +102,3 @@ if __name__ == '__main__':
     tableNames = [ "vendors", "part_drawings", "parts", "vendor_parts"]
     create_tables() 
     delete_tables(tableNames)
-
-
-#print(conn.closed)
-#conn.close()
