@@ -4,44 +4,66 @@ def create_tables():
     """ create tables in the PostgreSQL database"""
     commands = (
         """
-        CREATE TABLE vendors (
-            vendor_id SERIAL PRIMARY KEY,
-            vendor_name VARCHAR(255) NOT NULL
-        )
-        """,
-        """ CREATE TABLE parts (
-                part_id SERIAL PRIMARY KEY,
-                part_name VARCHAR(255) NOT NULL
-                )
+        CREATE TABLE StudentInfo (
+            LNum INTEGER UNIQUE NOT NULL,
+            FName VARCHAR(50) NOT NULL,
+            MName VARCHAR(50),
+            LName VARCHAR(50) NOT NULL,
+            ClassTitle VARCHAR(7),
+            GradYear INTEGER NOT NULL,
+            Email VARCHAR(50) NOT NULL,
+            PhoneNum INTEGER, 
+            Address VARCHAR(50) NOT NULL,
+            ResidenceHallID INTEGER,
+            RoomID INTEGER,
+            DOB DATE NOT NULL,
+            Enrollmentstatus VARCHAR(50),
+            POBox INTEGER,
+            FERPA BOOLEAN NOT NULL, 
+            SSN INTEGER UNIQUE, 
+            PreferredName VARCHAR(50),
+            MealPlan INTEGER,
+            Notes VARCHAR(100),
+            EmployeeID INTEGER, 
+            ExcelStudent BOOLEAN,
+            PRIMARY KEY (LNum)
+            )
         """,
         """
-        CREATE TABLE part_drawings (
-                part_id INTEGER PRIMARY KEY,
-                file_extension VARCHAR(5) NOT NULL,
-                drawing_data BYTEA NOT NULL,
-                FOREIGN KEY (part_id)
-                REFERENCES parts (part_id)
-                ON UPDATE CASCADE ON DELETE CASCADE
-        )
-        """,
+        CREATE TABLE Degree (
+            LNum INTEGER NOT NULL,
+            CumulativeGPA INTEGER NOT NULL,
+            DegreeID INTEGER UNIQUE NOT NULL,
+            dType VARCHAR(2) NOT NULL,
+            Major VARCHAR(10) NOT NULL,
+            Minor VARCHAR(10),
+            PRIMARY KEY (LNum, DegreeID, Major),
+                FOREIGN KEY(LNum) 
+                    REFERENCES StudentInfo(LNum)
+            )
+        """, 
         """
-        CREATE TABLE vendor_parts (
-                vendor_id INTEGER NOT NULL,
-                part_id INTEGER NOT NULL,
-                PRIMARY KEY (vendor_id , part_id),
-                FOREIGN KEY (vendor_id)
-                    REFERENCES vendors (vendor_id)
-                    ON UPDATE CASCADE ON DELETE CASCADE,
-                FOREIGN KEY (part_id)
-                    REFERENCES parts (part_id)
-                    ON UPDATE CASCADE ON DELETE CASCADE
-        )
+        CREATE TABLE DegreeRequirements (
+            DegreeID INTEGER UNIQUE NOT NULL, 
+            CurrCredits INTEGER NOT NULL,
+            CredReq INTEGER NOT NULL,
+            Notes VARCHAR(200),
+            TransferredCreds INTEGER,
+            A_Standing VARCHAR(20) NOT NULL,
+            EnrollmentStat VARCHAR(20) NOT NULL,
+            DroppedCourses VARCHAR(200),
+            Advisor VARCHAR(20) NOT NULL,
+            Date_started VARCHAR(30) NOT NULL,
+            PRIMARY KEY (DegreeID),
+                FOREIGN KEY(DegreeID) 
+                    REFERENCES Degree(DegreeID)
+            )
         """
         )
     #conn = None
     conn = psycopg2.connect(
             port = "3200",
-            host="139.147.207.184",
+            host="139.147.193.233",
             database="template1",
             user="yesenia",
             password="")
@@ -66,7 +88,7 @@ def create_tables():
 def delete_tables(tableNames):
     conn = psycopg2.connect(
             port = "3200",
-            host="139.147.207.184",
+            host="139.147.193.233",
             database="template1",
             user="yesenia",
             password="")
@@ -75,7 +97,7 @@ def delete_tables(tableNames):
     for x in tableNames:
         #tableName = x
         dropTableStmt = "DROP TABLE %s CASCADE;" %x
-        cur.execute(dropTableStmt);
+        cur.execute(dropTableStmt)
         conn.commit()
 
     cur.close()
@@ -86,7 +108,7 @@ def delete_table():
     dropTableStmt = "DROP TABLE %s;" %tableName
     conn = psycopg2.connect(
             port = "3200",
-            host="139.147.207.184",
+            host="139.147.193.233",
             database="template1",
             user="yesenia",
             password="")
@@ -99,6 +121,6 @@ def delete_table():
     conn.close()
 
 if __name__ == '__main__':
-    tableNames = [ "vendors", "part_drawings", "parts", "vendor_parts"]
-    create_tables() 
+    tableNames = [ "StudentInfo", "Degree", "DegreeRequirements"]
+    #create_tables() 
     delete_tables(tableNames)
