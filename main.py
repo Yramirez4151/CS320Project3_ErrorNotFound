@@ -1,5 +1,7 @@
 import psycopg2
 
+ipAddress = "139.147.199.45"
+
 def create_tables():
     """ create tables in the PostgreSQL database"""
     commands = (
@@ -136,7 +138,7 @@ def create_tables():
     #conn = None
     conn = psycopg2.connect(
             port = "3200",
-            host="139.147.199.45",
+            host=ipAddress,
             database="template1",
             user="yesenia",
             password="")
@@ -161,7 +163,7 @@ def create_tables():
 def delete_tables(tableNames):
     conn = psycopg2.connect(
             port = "3200",
-            host="139.147.199.45",
+            host=ipAddress,
             database="template1",
             user="yesenia",
             password="")
@@ -181,7 +183,7 @@ def delete_table():
     dropTableStmt = "DROP TABLE %s;" %tableName
     conn = psycopg2.connect(
             port = "3200",
-            host="139.147.199.45",
+            host=ipAddress,
             database="template1",
             user="yesenia",
             password="")
@@ -197,7 +199,7 @@ def insert():
     try:
         conn = psycopg2.connect(
                 port = "3200",
-                host="139.147.199.45",
+                host=ipAddress,
                 database="template1",
                 user="yesenia",
                 password="")
