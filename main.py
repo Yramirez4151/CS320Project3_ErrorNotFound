@@ -58,12 +58,85 @@ def create_tables():
                 FOREIGN KEY(DegreeID) 
                     REFERENCES Degree(DegreeID)
             )
+        """, 
+        """
+        CREATE TABLE Course(
+            CourseID INTEGER UNIQUE NOT NULL,
+            Professor VARCHAR(100),
+            Name VARCHAR(200),
+            Department VARCHAR(200),
+            PRIMARY KEY(CourseID)
+            )
+        """, 
+        """
+        CREATE TABLE CoursesTaken (
+            LNum INTEGER NOT NULL, 
+            DegreeID INTEGER NOT NULL,
+            CourseID INTEGER NOT NULL,
+            TermTaken VARCHAR(200),
+            Status VARCHAR(100),
+            Requirement VARCHAR(200),
+            Grade VARCHAR(2),
+            Notes VARCHAR(200),
+            PRIMARY KEY(LNum, DegreeID, CourseID),
+                FOREIGN KEY(LNum)
+                    REFERENCES StudentInfo(LNum),
+                FOREIGN KEY(DegreeID)
+                    REFERENCES Degree(DegreeID),
+                FOREIGN KEY(CourseID)
+                     REFERENCES Course(CourseID)
+            )
+        """,
+        """
+        CREATE TABLE Product(
+            ProductID INTEGER UNIQUE NOT NULL,
+            ProductType VARCHAR(100),
+            Name VARCHAR(200),
+		    PRIMARY KEY(ProductID)
+            )
+        """, 
+        """
+        CREATE TABLE Staff(
+            StaffID INTEGER UNIQUE NOT NULL,
+            StaffDept VARCHAR(200),
+            StaffName VARCHAR(200),
+            Wage INTEGER,
+            SSN INTEGER,
+            Role VARCHAR(200),
+            PRIMARY KEY(StaffID)
+            )
+        """, 
+        """
+        CREATE TABLE Contacts(
+            LNum INTEGER UNIQUE NOT NULL,
+            Ranking_of_importance INTEGER,
+            Relationship VARCHAR(200),
+            Name VARCHAR(200),
+            PhoneNum INTEGER,
+            Secondary_PhoneNum INTEGER,
+            Email VARCHAR(200), 
+            PRIMARY KEY(LNum),
+                FOREIGN KEY(LNum)
+                    REFERENCES StudentInfo(LNum)
+            )
+        """,
+        """
+        CREATE TABLE FinancialAid(
+            LNum INTEGER UNIQUE NOT NULL,
+            Scholarships INTEGER,
+            PellGrant INTEGER,
+            Loans INTEGER,
+            WorkStudy INTEGER,
+            PRIMARY KEY(LNum),
+                FOREIGN KEY(LNum)
+                    REFERENCES StudentInfo(LNum)
+            )
         """
         )
     #conn = None
     conn = psycopg2.connect(
             port = "3200",
-            host="139.147.193.233",
+            host="139.147.224.54",
             database="template1",
             user="yesenia",
             password="")
@@ -88,7 +161,7 @@ def create_tables():
 def delete_tables(tableNames):
     conn = psycopg2.connect(
             port = "3200",
-            host="139.147.193.233",
+            host="139.147.224.54",
             database="template1",
             user="yesenia",
             password="")
@@ -108,7 +181,7 @@ def delete_table():
     dropTableStmt = "DROP TABLE %s;" %tableName
     conn = psycopg2.connect(
             port = "3200",
-            host="139.147.193.233",
+            host="139.147.224.54",
             database="template1",
             user="yesenia",
             password="")
@@ -121,6 +194,6 @@ def delete_table():
     conn.close()
 
 if __name__ == '__main__':
-    tableNames = [ "StudentInfo", "Degree", "DegreeRequirements"]
+    tableNames = [ "StudentInfo", "Degree", "DegreeRequirements", "Course", "Product", "CoursesTaken", "Staff", "Contacts", "FinancialAid"]
     #create_tables() 
     delete_tables(tableNames)
