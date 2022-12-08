@@ -12,7 +12,7 @@ def create_tables():
             ClassTitle VARCHAR(10),
             GradYear INTEGER NOT NULL,
             Email VARCHAR(200) NOT NULL,
-            PhoneNum INTEGER, 
+            PhoneNum VARCHAR(15), 
             Address VARCHAR(50) NOT NULL,
             ResidenceHallID INTEGER,
             RoomID INTEGER,
@@ -218,6 +218,6 @@ def insert():
             conn.close()
 if __name__ == '__main__':
     tableNames = [ "StudentInfo", "Degree", "DegreeRequirements", "Course", "Product", "CoursesTaken", "Staff", "Contacts", "FinancialAid"]
-    #create_tables() 
+    create_tables() 
     #delete_tables(tableNames)
-    #insert()
+    insert()
