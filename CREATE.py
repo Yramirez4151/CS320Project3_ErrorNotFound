@@ -2,7 +2,7 @@ import psycopg2
 
 conn = psycopg2.connect(
         port = "3200",
-        host="139.147.199.45",
+        host="139.147.236.49",
         database="template1",
         user="yesenia",
         password="")
@@ -137,6 +137,19 @@ def create_tables():
             PRIMARY KEY(LNum),
                 FOREIGN KEY(LNum)
                     REFERENCES StudentInfo(LNum)
+            )
+        """,
+        """
+        CREATE TABLE Borrow(
+            LNum INTEGER UNIQUE NOT NULL,
+            Lib_Name VARCHAR(20),
+            ProductID INTEGER UNIQUE NOT NULL,
+            Date_Borrowed DATE NOT NULL,
+            Due_Date DATE NOT NULL,
+            Date_Returned DATE,
+            PRIMARY KEY(LNum),
+                FOREIGN KEY(LNum)
+                    REFERENCES StudentInfo(LNum) 
             )
         """
         )
