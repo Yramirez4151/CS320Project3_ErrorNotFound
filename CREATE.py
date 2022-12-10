@@ -188,7 +188,7 @@ def create_tables():
         """,
         """
         CREATE TABLE Clubs(
-            CLubID                  INTEGER UNIQUE NOT NULL,
+            ClubID                  INTEGER UNIQUE NOT NULL,
             Name                    VARCHAR(100),
             ClubType                VARCHAR(20),
             Budget                  INTEGER,
@@ -221,7 +221,7 @@ def create_tables():
         CREATE TABLE Library(
             Name VARCHAR(50) UNIQUE NOT NULL,
             TechServices VARCHAR(10),
-            Colleection INTEGER,
+            Collection INTEGER,
             Hours VARCHAR(100),
             Printer VARCHAR(10),
             Events VARCHAR(200),
