@@ -179,8 +179,8 @@ def create_tables():
             Type VARCHAR(20),
             RoomNum INTEGER,
             RA VARCHAR(100),
-            AC                      VARCHAR(10),
-            Floor                   INTEGER,
+            AC VARCHAR(10),
+            Floor INTEGER,
             PRIMARY KEY(RoomID),
                 FOREIGN KEY(RID)
                     REFERENCES ResidenceHall(RID)
@@ -188,17 +188,17 @@ def create_tables():
         """,
         """
         CREATE TABLE Clubs(
-            ClubID                  INTEGER UNIQUE NOT NULL,
-            Name                    VARCHAR(100),
-            ClubType                VARCHAR(20),
-            Budget                  INTEGER,
-            Coach                   VARCHAR(100),
-            FacAdvisor              VARCHAR(100),
-            MeetingLoc              VARCHAR(100),
-            Contact                 VARCHAR(10),
-            WebLink                 VARCHAR(50),
-            Email                   VARCHAR(30),
-            Active                  VARCHAR(10),
+            ClubID INTEGER UNIQUE NOT NULL,
+            Name VARCHAR(100),
+            ClubType VARCHAR(20),
+            Budget INTEGER,
+            Coach VARCHAR(100),
+            FacAdvisor VARCHAR(100),
+            MeetingLoc VARCHAR(100),
+            Contact VARCHAR(10),
+            WebLink VARCHAR(50),
+            Email VARCHAR(30),
+            Active VARCHAR(10),
             PRIMARY KEY(CLubID)
             )
         """,
@@ -220,7 +220,7 @@ def create_tables():
         """
         CREATE TABLE Library(
             Name VARCHAR(50) UNIQUE NOT NULL,
-            TechServices VARCHAR(10),
+            TechServices BOOLEAN,
             Collection INTEGER,
             Hours VARCHAR(100),
             Printer VARCHAR(10),
