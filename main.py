@@ -12,4 +12,4 @@ if __name__ == '__main__':
     #grant_perm()
     #delete_tables(tableNames)
     #insert()
-    #readCSV()
+    readCSV()
