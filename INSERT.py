@@ -15,6 +15,7 @@ def readCSV():
     with open("./StudentInfoData.csv", 'r') as file:
         csvreader = csv.reader(file)
         for row in csvreader:
+            print(row)
             insertStudent(row)
         cur.close()
         conn.close()
