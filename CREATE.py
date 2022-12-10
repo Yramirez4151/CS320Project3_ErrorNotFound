@@ -119,8 +119,8 @@ def create_tables():
             Ranking_of_importance INTEGER,
             Relationship VARCHAR(200),
             Name VARCHAR(200),
-            PhoneNum INTEGER,
-            Secondary_PhoneNum INTEGER,
+            PhoneNum VARCHAR(20),
+            Secondary_PhoneNum VARCHAR(20),
             Email VARCHAR(200), 
             PRIMARY KEY(LNum),
                 FOREIGN KEY(LNum)
