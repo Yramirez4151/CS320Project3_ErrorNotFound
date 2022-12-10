@@ -2,7 +2,7 @@ import psycopg2
 
 conn = psycopg2.connect(
         port = "3200",
-        host="139.147.236.49",
+        host="139.147.197.225",
         database="template1",
         user="yesenia",
         password="")
@@ -150,6 +150,83 @@ def create_tables():
             PRIMARY KEY(LNum),
                 FOREIGN KEY(LNum)
                     REFERENCES StudentInfo(LNum) 
+            )
+        """,
+        """
+        CREATE TABLE ResidenceHall(
+            RID INTEGER UNIQUE NOT NULL,
+            HallName VARCHAR(20),
+            GreekLife VARCHAR(20),
+            Location VARCHAR(100),
+            Tier INTEGER,
+            InterestGroup VARCHAR(20),
+            Capacity INTEGER,
+            Elevators VARCHAR(10),
+            AC VARCHAR(10),
+            Coed VARCHAR(10),
+            Laundry VARCHAR(10),
+            Kitchen VARCHAR(10),
+            ResLifeStaff VARCHAR(20),
+            HR VARCHAR(20),
+            Accessibility VARCHAR(20),
+            PRIMARY KEY(RID)
+            )
+        """,
+        """
+        CREATE TABLE Room(
+            RoomID INTEGER UNIQUE NOT NULL,
+            RID INTEGER UNIQUE NOT NULL,
+            Type VARCHAR(20),
+            RoomNum INTEGER,
+            RA VARCHAR(100),
+            AC                      VARCHAR(10),
+            Floor                   INTEGER,
+            PRIMARY KEY(RoomID),
+                FOREIGN KEY(RID)
+                    REFERENCES ResidenceHall(RID)
+            )
+        """,
+        """
+        CREATE TABLE Clubs(
+            CLubID                  INTEGER UNIQUE NOT NULL,
+            Name                    VARCHAR(100),
+            ClubType                VARCHAR(20),
+            Budget                  INTEGER,
+            Coach                   VARCHAR(100),
+            FacAdvisor              VARCHAR(100),
+            MeetingLoc              VARCHAR(100),
+            Contact                 VARCHAR(10),
+            WebLink                 VARCHAR(50),
+            Email                   VARCHAR(30),
+            Active                  VARCHAR(10),
+            PRIMARY KEY(CLubID)
+            )
+        """,
+        """
+        CREATE TABLE Membership(
+            LNum                    INTEGER UNIQUE NOT NULL,
+            ClubID                  INTEGER UNIQUE NOT NULL,
+            MembershipInfo          VARCHAR(100),
+            Role                    VARCHAR(20),
+            Active                  VARCHAR(10),
+            Forms                   VARCHAR(50),
+            PRIMARY KEY(LNum, ClubID),
+            FOREIGN KEY(LNum)
+                REFERENCES StudentInfo(LNum), 
+            FOREIGN KEY(ClubID)
+                REFERENCES Clubs(ClubID)
+            )
+        """,
+        """
+        CREATE TABLE Library(
+            Name VARCHAR(50) UNIQUE NOT NULL,
+            TechServices VARCHAR(10),
+            Colleection INTEGER,
+            Hours VARCHAR(100),
+            Printer VARCHAR(10),
+            Events VARCHAR(200),
+            MaxOccupancy INTEGER,
+            PRIMARY KEY(Name)
             )
         """
         )
