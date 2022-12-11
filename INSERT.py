@@ -3,7 +3,7 @@ import csv
 
 conn = psycopg2.connect(
         port = "3200",
-        host="139.147.197.225",
+        host="139.147.236.49",
         database="template1",
         user="yesenia",
         password="")
@@ -12,7 +12,7 @@ cur = conn.cursor()
 #read CSV files and insert
 def readCSV():
     #with open("./MOCK_DATA.csv", 'r') as file:
-    with open("./StudentInfoData.csv", 'r') as file:
+    with open("./DATA/StudentInfoData.csv", 'r') as file:
         csvreader = csv.reader(file)
         for row in csvreader:
             print(row)
