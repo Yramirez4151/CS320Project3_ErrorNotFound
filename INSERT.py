@@ -1,5 +1,6 @@
 import psycopg2
 import csv
+from configwriter import *
 
 conn = psycopg2.connect(
         port = "3200",
@@ -7,10 +8,11 @@ conn = psycopg2.connect(
         database="errornotfounddb",
         user="yesenia",
         password="")
+
 cur = conn.cursor()
 
 #read CSV files and insert
-def readCSV():
+def readStudentCSV():
     #with open("./MOCK_DATA.csv", 'r') as file:
     with open("./DATA/StudentInfoData.csv", 'r') as file:
         csvreader = csv.reader(file)
@@ -48,6 +50,16 @@ def insertStudent(student):
     except(Exception, psycopg2.DatabaseError) as error:
         print(error)
 
+def readDegreeCSV():
+    #with open("./MOCK_DATA.csv", 'r') as file:
+    with open("./DATA/DegreeData.csv", 'r') as file:
+        csvreader = csv.reader(file)
+        for row in csvreader:
+            # print(row)
+            insertDegree(row)
+        cur.close()
+        conn.close()
+
 def insertDegree(row):
     try:
         postgres_insert_query = """ INSERT INTO Degree (LNum, CumulativeGPA, DegreeID, dType, ClassTitle, Major, Minor) VALUES (%s, %s, %s, %s, %s, %s, %s)"""
@@ -59,6 +71,16 @@ def insertDegree(row):
         print(count, "Record inserted successfully into vendor")
     except(Exception, psycopg2.DatabaseError) as error:
         print(error)
+
+def readDegreeReqCSV():
+    #with open("./MOCK_DATA.csv", 'r') as file:
+    with open("./DATA/StudentInfoData.csv", 'r') as file:
+        csvreader = csv.reader(file)
+        for row in csvreader:
+            # print(row)
+            insertStudent(row)
+        cur.close()
+        conn.close()
 
 def insertDegreeRequirements(row):
     try:
@@ -72,6 +94,16 @@ def insertDegreeRequirements(row):
     except(Exception, psycopg2.DatabaseError) as error:
         print(error)
 
+def readCourseCSV():
+    #with open("./MOCK_DATA.csv", 'r') as file:
+    with open("./DATA/StudentInfoData.csv", 'r') as file:
+        csvreader = csv.reader(file)
+        for row in csvreader:
+            # print(row)
+            insertStudent(row)
+        cur.close()
+        conn.close()
+
 def insertCourse(row):
     try:
         postgres_insert_query = """ INSERT INTO Course (CourseID, Professor, Name, Department) VALUES (%s, %s, %s, %s)"""
@@ -83,6 +115,16 @@ def insertCourse(row):
         print(count, "Record inserted successfully into vendor")
     except(Exception, psycopg2.DatabaseError) as error:
         print(error)
+
+def readDegreeReqCSV():
+    #with open("./MOCK_DATA.csv", 'r') as file:
+    with open("./DATA/StudentInfoData.csv", 'r') as file:
+        csvreader = csv.reader(file)
+        for row in csvreader:
+            # print(row)
+            insertStudent(row)
+        cur.close()
+        conn.close()
 
 def insertCoursesTaken(row):
     try:
@@ -96,6 +138,16 @@ def insertCoursesTaken(row):
     except(Exception, psycopg2.DatabaseError) as error:
         print(error)
 
+def readProductCSV():
+    #with open("./MOCK_DATA.csv", 'r') as file:
+    with open("./DATA/StudentInfoData.csv", 'r') as file:
+        csvreader = csv.reader(file)
+        for row in csvreader:
+            # print(row)
+            insertStudent(row)
+        cur.close()
+        conn.close()
+
 def insertProduct(row):
     try:
         postgres_insert_query = """ INSERT INTO Product (ProductID, ProductType, Name) VALUES (%s, %s, %s)"""
@@ -107,6 +159,16 @@ def insertProduct(row):
         print(count, "Record inserted successfully into vendor")
     except(Exception, psycopg2.DatabaseError) as error:
         print(error)
+
+def readStaffCSV():
+    #with open("./MOCK_DATA.csv", 'r') as file:
+    with open("./DATA/StudentInfoData.csv", 'r') as file:
+        csvreader = csv.reader(file)
+        for row in csvreader:
+            # print(row)
+            insertStudent(row)
+        cur.close()
+        conn.close()
 
 def insertStaff(row):
     try:
@@ -120,6 +182,16 @@ def insertStaff(row):
     except(Exception, psycopg2.DatabaseError) as error:
         print(error)
 
+def readContactCSV():
+    #with open("./MOCK_DATA.csv", 'r') as file:
+    with open("./DATA/StudentInfoData.csv", 'r') as file:
+        csvreader = csv.reader(file)
+        for row in csvreader:
+            # print(row)
+            insertStudent(row)
+        cur.close()
+        conn.close()
+
 def insertContacts(row):
     try:
         postgres_insert_query = """ INSERT INTO Contacts (LNum, Ranking_of_importance, Relationship, Name, PhoneNum, Secondary_PhoneNum, Email) VALUES (%s, %s, %s, %s, %s, %s, %s)"""
@@ -131,6 +203,16 @@ def insertContacts(row):
         print(count, "Record inserted successfully into vendor")
     except(Exception, psycopg2.DatabaseError) as error:
         print(error)
+
+def readFinancialCSV():
+    #with open("./MOCK_DATA.csv", 'r') as file:
+    with open("./DATA/StudentInfoData.csv", 'r') as file:
+        csvreader = csv.reader(file)
+        for row in csvreader:
+            # print(row)
+            insertStudent(row)
+        cur.close()
+        conn.close()
 
 def insertFinancialAid(aid):
     try:
@@ -144,6 +226,16 @@ def insertFinancialAid(aid):
     except(Exception, psycopg2.DatabaseError) as error:
         print(error)
 
+def readBorrowCSV():
+    #with open("./MOCK_DATA.csv", 'r') as file:
+    with open("./DATA/StudentInfoData.csv", 'r') as file:
+        csvreader = csv.reader(file)
+        for row in csvreader:
+            # print(row)
+            insertStudent(row)
+        cur.close()
+        conn.close()
+
 def insertBorrow(borrow):
     try:
         postgres_insert_query = """ INSERT INTO Borrow (LNum, Lib_Name, ProductID, Date_Borrowed, Due_Date, Date_Returned) VALUES (%s,%s,%s,%s,%s,%s)"""
@@ -155,6 +247,16 @@ def insertBorrow(borrow):
         print(count, "Record inserted successfully into vendor")
     except(Exception, psycopg2.DatabaseError) as error:
         print(error)
+
+def readHallCSV():
+    #with open("./MOCK_DATA.csv", 'r') as file:
+    with open("./DATA/StudentInfoData.csv", 'r') as file:
+        csvreader = csv.reader(file)
+        for row in csvreader:
+            # print(row)
+            insertStudent(row)
+        cur.close()
+        conn.close()
 
 def insertHall(hall):
     try:
@@ -168,10 +270,20 @@ def insertHall(hall):
     except(Exception, psycopg2.DatabaseError) as error:
         print(error)
 
-def insertBorrow(borrow):
+def readRoomCSV():
+    #with open("./MOCK_DATA.csv", 'r') as file:
+    with open("./DATA/RoomData.csv", 'r') as file:
+        csvreader = csv.reader(file)
+        for row in csvreader:
+            # print(row)
+            insertStudent(row)
+        cur.close()
+        conn.close()
+
+def insertRoom(room):
     try:
-        postgres_insert_query = """ INSERT INTO Borrow (RoomID, RID, Type, RoomNum, RA, AC, Floor) VALUES (%s,%s,%s,%s,%s,%s,%s)"""
-        record_to_insert = (borrow)
+        postgres_insert_query = """ INSERT INTO Room (RoomID, RID, Type, RoomNum, RA, AC, Floor) VALUES (%s,%s,%s,%s,%s,%s,%s)"""
+        record_to_insert = (room)
         cur.execute(postgres_insert_query, record_to_insert)
 
         conn.commit()
@@ -179,6 +291,16 @@ def insertBorrow(borrow):
         print(count, "Record inserted successfully into vendor")
     except(Exception, psycopg2.DatabaseError) as error:
         print(error)
+
+def readClubsCSV():
+    #with open("./MOCK_DATA.csv", 'r') as file:
+    with open("./DATA/StudentInfoData.csv", 'r') as file:
+        csvreader = csv.reader(file)
+        for row in csvreader:
+            # print(row)
+            insertStudent(row)
+        cur.close()
+        conn.close()
 
 def insertClubs(clubs):
     try:
@@ -192,6 +314,16 @@ def insertClubs(clubs):
     except(Exception, psycopg2.DatabaseError) as error:
         print(error)
 
+def readMemberCSV():
+    #with open("./MOCK_DATA.csv", 'r') as file:
+    with open("./DATA/StudentInfoData.csv", 'r') as file:
+        csvreader = csv.reader(file)
+        for row in csvreader:
+            # print(row)
+            insertStudent(row)
+        cur.close()
+        conn.close()
+
 def insertMembership(member):
     try:
         postgres_insert_query = """ INSERT INTO Membership (LNum, ClubID, MembershipInfo, Role, Active, Forms) VALUES (%s,%s,%s,%s,%s,%s)"""
@@ -203,6 +335,16 @@ def insertMembership(member):
         print(count, "Record inserted successfully into vendor")
     except(Exception, psycopg2.DatabaseError) as error:
         print(error)
+
+def readLibraryCSV():
+    #with open("./MOCK_DATA.csv", 'r') as file:
+    with open("./DATA/LibraryData.csv", 'r') as file:
+        csvreader = csv.reader(file)
+        for row in csvreader:
+            # print(row)
+            insertLibrary(row)
+        cur.close()
+        conn.close()
 
 def insertLibrary(library):
     try:

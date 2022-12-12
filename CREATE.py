@@ -222,7 +222,7 @@ def create_tables():
             Name VARCHAR(50) UNIQUE NOT NULL,
             TechServices BOOLEAN,
             Collection INTEGER,
-            Hours VARCHAR(100),
+            Hours VARCHAR(1000),
             Printer VARCHAR(10),
             Events VARCHAR(200),
             MaxOccupancy INTEGER,
