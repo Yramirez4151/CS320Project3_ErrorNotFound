@@ -250,17 +250,17 @@ def insertBorrow(borrow):
 
 def readHallCSV():
     #with open("./MOCK_DATA.csv", 'r') as file:
-    with open("./DATA/StudentInfoData.csv", 'r') as file:
+    with open("./DATA/ResidenceHallID.csv", 'r') as file:
         csvreader = csv.reader(file)
         for row in csvreader:
             # print(row)
-            insertStudent(row)
+            insertHall(row)
         cur.close()
         conn.close()
 
 def insertHall(hall):
     try:
-        postgres_insert_query = """ INSERT INTO ResidenceHall (RID, HallName, GreekLife, Location, Tier, InterestGroup, Capacity, Elevators, AC, Coed, Laundry, Kitchen, ResLifeStaff, HR, Accessiblity) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
+        postgres_insert_query = """ INSERT INTO ResidenceHall (RID, HallName, GreekLife, Location, Tier, InterestGroup, Capacity, Elevators, AC, Coed, Laundry, Kitchen, ResLifeStaff, HR, Accessibility) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
         record_to_insert = (hall)
         cur.execute(postgres_insert_query, record_to_insert)
 
@@ -272,10 +272,10 @@ def insertHall(hall):
 
 def readRoomCSV():
     #with open("./MOCK_DATA.csv", 'r') as file:
-    with open("./DATA/RoomData.csv", 'r') as file:
+    with open("./DATA/roomD.csv", 'r') as file:
         csvreader = csv.reader(file)
         for row in csvreader:
-            # print(row)
+            print(row)
             insertRoom(row)
         cur.close()
         conn.close()
@@ -356,4 +356,4 @@ def insertLibrary(library):
         count = cur.rowcount
         print(count, "Record inserted successfully into vendor")
     except(Exception, psycopg2.DatabaseError) as error:
-        print(error)
+        print(error) 

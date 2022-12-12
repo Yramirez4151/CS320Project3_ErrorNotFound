@@ -98,7 +98,7 @@ def create_tables():
         CREATE TABLE Product(
             ProductID INTEGER UNIQUE NOT NULL,
             ProductType VARCHAR(100),
-            Name VARCHAR(200),
+            Name VARCHAR(500),
 		    PRIMARY KEY(ProductID)
             )
         """, 
@@ -175,7 +175,7 @@ def create_tables():
         """
         CREATE TABLE Room(
             RoomID INTEGER UNIQUE NOT NULL,
-            RID INTEGER UNIQUE NOT NULL,
+            RID INTEGER NOT NULL,
             Type VARCHAR(100),
             RoomNum INTEGER,
             RA VARCHAR(100),
