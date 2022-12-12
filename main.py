@@ -8,13 +8,14 @@ from GRANTPERMISSION import *
 
 if __name__ == '__main__':
     tableNames = [ "StudentInfo", "Degree", "DegreeRequirements", "Course", "Product", "CoursesTaken", "Staff", "Contacts", "FinancialAid", "Borrow", "ResidenceHall", "Room", "Clubs", "Membership", "Library"]
-    # delete_tables(tableNames)
-    # create_tables()
-    # grant_perm()
+    #delete_tables(tableNames)
+    #create_tables()
+    #grant_perm()
     #readStudentCSV()
     #readLibraryCSV()
-    # readHallCSV()
+    #readHallCSV()
     #readRoomCSV()
     #readProductCSV()
     #readCourseCSV()
-    readStaffCSV()
+    #readStaffCSV()
+    #readContactCSV()

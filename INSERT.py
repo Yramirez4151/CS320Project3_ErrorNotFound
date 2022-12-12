@@ -184,11 +184,11 @@ def insertStaff(row):
 
 def readContactCSV():
     #with open("./MOCK_DATA.csv", 'r') as file:
-    with open("./DATA/StudentInfoData.csv", 'r') as file:
+    with open("./DATA/ContactData.csv", 'r') as file:
         csvreader = csv.reader(file)
         for row in csvreader:
             # print(row)
-            insertStudent(row)
+            insertContacts(row)
         cur.close()
         conn.close()
 

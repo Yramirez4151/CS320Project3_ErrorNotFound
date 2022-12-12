@@ -115,14 +115,14 @@ def create_tables():
         """, 
         """
         CREATE TABLE Contacts(
-            LNum INTEGER UNIQUE NOT NULL,
+            LNum INTEGER NOT NULL,
             Ranking_of_importance INTEGER,
             Relationship VARCHAR(200),
             Name VARCHAR(200),
             PhoneNum VARCHAR(20),
             Secondary_PhoneNum VARCHAR(20),
             Email VARCHAR(200), 
-            PRIMARY KEY(LNum),
+            PRIMARY KEY(LNum, phoneNum),
                 FOREIGN KEY(LNum)
                     REFERENCES StudentInfo(LNum)
             )
