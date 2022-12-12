@@ -96,11 +96,11 @@ def insertDegreeRequirements(row):
 
 def readCourseCSV():
     #with open("./MOCK_DATA.csv", 'r') as file:
-    with open("./DATA/StudentInfoData.csv", 'r') as file:
+    with open("./DATA/courses.csv", 'r') as file:
         csvreader = csv.reader(file)
         for row in csvreader:
             # print(row)
-            insertStudent(row)
+            insertCourse(row)
         cur.close()
         conn.close()
 
@@ -162,11 +162,11 @@ def insertProduct(row):
 
 def readStaffCSV():
     #with open("./MOCK_DATA.csv", 'r') as file:
-    with open("./DATA/StudentInfoData.csv", 'r') as file:
+    with open("./DATA/StaffData.csv", 'r') as file:
         csvreader = csv.reader(file)
         for row in csvreader:
             # print(row)
-            insertStudent(row)
+            insertStaff(row)
         cur.close()
         conn.close()
 
