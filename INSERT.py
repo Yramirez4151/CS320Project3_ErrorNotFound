@@ -140,11 +140,11 @@ def insertCoursesTaken(row):
 
 def readProductCSV():
     #with open("./MOCK_DATA.csv", 'r') as file:
-    with open("./DATA/StudentInfoData.csv", 'r') as file:
+    with open("./DATA/ProductData.csv", 'r') as file:
         csvreader = csv.reader(file)
         for row in csvreader:
             # print(row)
-            insertStudent(row)
+            insertProduct(row)
         cur.close()
         conn.close()
 
@@ -276,7 +276,7 @@ def readRoomCSV():
         csvreader = csv.reader(file)
         for row in csvreader:
             # print(row)
-            insertStudent(row)
+            insertRoom(row)
         cur.close()
         conn.close()
 

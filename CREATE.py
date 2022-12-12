@@ -176,10 +176,10 @@ def create_tables():
         CREATE TABLE Room(
             RoomID INTEGER UNIQUE NOT NULL,
             RID INTEGER UNIQUE NOT NULL,
-            Type VARCHAR(20),
+            Type VARCHAR(100),
             RoomNum INTEGER,
             RA VARCHAR(100),
-            AC VARCHAR(10),
+            AC BOOLEAN,
             Floor INTEGER,
             PRIMARY KEY(RoomID),
                 FOREIGN KEY(RID)
