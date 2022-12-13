@@ -4,7 +4,7 @@ from configwriter import *
 
 conn = psycopg2.connect(
         port = "3200",
-        host="139.147.201.76",
+        host="139.147.236.49",
         database="errornotfounddb",
         user="yesenia",
         password="")
@@ -19,8 +19,6 @@ def readStudentCSV():
         for row in csvreader:
             # print(row)
             insertStudent(row)
-        cur.close()
-        conn.close()
 
 def insert():
     try:
@@ -57,8 +55,6 @@ def readDegreeCSV():
         for row in csvreader:
             # print(row)
             insertDegree(row)
-        cur.close()
-        conn.close()
 
 def insertDegree(row):
     try:
@@ -79,8 +75,6 @@ def readDegreeReqCSV():
         for row in csvreader:
             # print(row)
             insertStudent(row)
-        cur.close()
-        conn.close()
 
 def insertDegreeRequirements(row):
     try:
@@ -101,8 +95,6 @@ def readCourseCSV():
         for row in csvreader:
             # print(row)
             insertCourse(row)
-        cur.close()
-        conn.close()
 
 def insertCourse(row):
     try:
@@ -116,15 +108,13 @@ def insertCourse(row):
     except(Exception, psycopg2.DatabaseError) as error:
         print(error)
 
-def readDegreeReqCSV():
+def readCourseTaken():
     #with open("./MOCK_DATA.csv", 'r') as file:
     with open("./DATA/StudentInfoData.csv", 'r') as file:
         csvreader = csv.reader(file)
         for row in csvreader:
             # print(row)
             insertStudent(row)
-        cur.close()
-        conn.close()
 
 def insertCoursesTaken(row):
     try:
@@ -145,8 +135,6 @@ def readProductCSV():
         for row in csvreader:
             # print(row)
             insertProduct(row)
-        cur.close()
-        conn.close()
 
 def insertProduct(row):
     try:
@@ -167,8 +155,6 @@ def readStaffCSV():
         for row in csvreader:
             # print(row)
             insertStaff(row)
-        cur.close()
-        conn.close()
 
 def insertStaff(row):
     try:
@@ -189,8 +175,6 @@ def readContactCSV():
         for row in csvreader:
             # print(row)
             insertContacts(row)
-        cur.close()
-        conn.close()
 
 def insertContacts(row):
     try:
@@ -211,8 +195,6 @@ def readFinancialCSV():
         for row in csvreader:
             # print(row)
             insertStudent(row)
-        cur.close()
-        conn.close()
 
 def insertFinancialAid(aid):
     try:
@@ -233,8 +215,6 @@ def readBorrowCSV():
         for row in csvreader:
             # print(row)
             insertStudent(row)
-        cur.close()
-        conn.close()
 
 def insertBorrow(borrow):
     try:
@@ -255,8 +235,6 @@ def readHallCSV():
         for row in csvreader:
             # print(row)
             insertHall(row)
-        cur.close()
-        conn.close()
 
 def insertHall(hall):
     try:
@@ -272,13 +250,11 @@ def insertHall(hall):
 
 def readRoomCSV():
     #with open("./MOCK_DATA.csv", 'r') as file:
-    with open("./DATA/roomD.csv", 'r') as file:
+    with open("./DATA/RoomData.csv", 'r') as file:
         csvreader = csv.reader(file)
         for row in csvreader:
             print(row)
             insertRoom(row)
-        cur.close()
-        conn.close()
 
 def insertRoom(room):
     try:
@@ -299,8 +275,6 @@ def readClubsCSV():
         for row in csvreader:
             # print(row)
             insertStudent(row)
-        cur.close()
-        conn.close()
 
 def insertClubs(clubs):
     try:
@@ -321,8 +295,6 @@ def readMemberCSV():
         for row in csvreader:
             # print(row)
             insertStudent(row)
-        cur.close()
-        conn.close()
 
 def insertMembership(member):
     try:
@@ -343,8 +315,6 @@ def readLibraryCSV():
         for row in csvreader:
             # print(row)
             insertLibrary(row)
-        cur.close()
-        conn.close()
 
 def insertLibrary(library):
     try:
@@ -357,3 +327,23 @@ def insertLibrary(library):
         print(count, "Record inserted successfully into vendor")
     except(Exception, psycopg2.DatabaseError) as error:
         print(error) 
+
+
+def insertAll():
+    readStudentCSV()
+    # readDegreeCSV()
+    # readDegreeReqCSV()
+    readProductCSV()
+    readStaffCSV()
+    readContactCSV()
+    # readFinancialCSV()
+    # readBorrowCSV()
+    readHallCSV()
+    readRoomCSV()
+    # readClubsCSV()
+    # readMemberCSV()
+    readLibraryCSV()
+    readCourseCSV()
+
+    cur.close()
+    conn.close()

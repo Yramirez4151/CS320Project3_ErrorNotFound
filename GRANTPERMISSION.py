@@ -3,7 +3,7 @@ import psycopg2
 
 conn = psycopg2.connect(
         port = "3200",
-        host="139.147.201.76",
+        host="139.147.236.49",
         database="errornotfounddb",
         user="yesenia",
         password="")
