@@ -189,16 +189,16 @@ def create_tables():
         """
         CREATE TABLE Clubs(
             ClubID INTEGER UNIQUE NOT NULL,
-            Name VARCHAR(100),
-            ClubType VARCHAR(20),
+            Name VARCHAR(500),
+            ClubType VARCHAR(100),
             Budget INTEGER,
             Coach VARCHAR(100),
             FacAdvisor VARCHAR(100),
             MeetingLoc VARCHAR(100),
-            Contact VARCHAR(10),
-            WebLink VARCHAR(50),
-            Email VARCHAR(30),
-            Active VARCHAR(10),
+            Contact VARCHAR(100),
+            WebLink VARCHAR(500),
+            Email VARCHAR(300),
+            Active BOOLEAN,
             PRIMARY KEY(CLubID)
             )
         """,

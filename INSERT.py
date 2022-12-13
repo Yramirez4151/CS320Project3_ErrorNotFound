@@ -27,8 +27,8 @@ def insert():
         record_to_insert = (989815820,'Doina', 'Jakub', 'Andrews', 'Freshman', 2032, 'jakubd@lafayette.edu', '412-734-7650','1606 West Drive', 1, 23, '1961-12-09', 'Active', 9965, True, 500089487, 'Yessi', 7,'', 1, False)
         cur.execute(postgres_insert_query, record_to_insert)
         conn.commit()
-        count = cur.rowcount
-        print(count, "Record inserted successfully into vendor")
+        # count = cur.rowcount
+        # print(count, "Record inserted successfully into vendor")
     except(Exception, psycopg2.DatabaseError) as error:
         print(error)
     finally:
@@ -43,8 +43,8 @@ def insertStudent(student):
         cur.execute(postgres_insert_query, record_to_insert)
 
         conn.commit()
-        count = cur.rowcount
-        print(count, "Record inserted successfully into vendor")
+        # count = cur.rowcount
+        # print(count, "Record inserted successfully into vendor")
     except(Exception, psycopg2.DatabaseError) as error:
         print(error)
 
@@ -63,8 +63,8 @@ def insertDegree(row):
         cur.execute(postgres_insert_query, record_to_insert)
 
         conn.commit()
-        count = cur.rowcount
-        print(count, "Record inserted successfully into vendor")
+        # count = cur.rowcount
+        # print(count, "Record inserted successfully into vendor")
     except(Exception, psycopg2.DatabaseError) as error:
         print(error)
 
@@ -83,8 +83,8 @@ def insertDegreeRequirements(row):
         cur.execute(postgres_insert_query, record_to_insert)
 
         conn.commit()
-        count = cur.rowcount
-        print(count, "Record inserted successfully into vendor")
+        # count = cur.rowcount
+        # print(count, "Record inserted successfully into vendor")
     except(Exception, psycopg2.DatabaseError) as error:
         print(error)
 
@@ -103,8 +103,8 @@ def insertCourse(row):
         cur.execute(postgres_insert_query, record_to_insert)
 
         conn.commit()
-        count = cur.rowcount
-        print(count, "Record inserted successfully into vendor")
+        # count = cur.rowcount
+        # print(count, "Record inserted successfully into vendor")
     except(Exception, psycopg2.DatabaseError) as error:
         print(error)
 
@@ -123,8 +123,8 @@ def insertCoursesTaken(row):
         cur.execute(postgres_insert_query, record_to_insert)
 
         conn.commit()
-        count = cur.rowcount
-        print(count, "Record inserted successfully into vendor")
+        # count = cur.rowcount
+        # print(count, "Record inserted successfully into vendor")
     except(Exception, psycopg2.DatabaseError) as error:
         print(error)
 
@@ -143,8 +143,8 @@ def insertProduct(row):
         cur.execute(postgres_insert_query, record_to_insert)
 
         conn.commit()
-        count = cur.rowcount
-        print(count, "Record inserted successfully into vendor")
+        # count = cur.rowcount
+        # print(count, "Record inserted successfully into vendor")
     except(Exception, psycopg2.DatabaseError) as error:
         print(error)
 
@@ -163,8 +163,8 @@ def insertStaff(row):
         cur.execute(postgres_insert_query, record_to_insert)
 
         conn.commit()
-        count = cur.rowcount
-        print(count, "Record inserted successfully into vendor")
+        # count = cur.rowcount
+        # print(count, "Record inserted successfully into vendor")
     except(Exception, psycopg2.DatabaseError) as error:
         print(error)
 
@@ -183,8 +183,8 @@ def insertContacts(row):
         cur.execute(postgres_insert_query, record_to_insert)
 
         conn.commit()
-        count = cur.rowcount
-        print(count, "Record inserted successfully into vendor")
+        # count = cur.rowcount
+        # print(count, "Record inserted successfully into vendor")
     except(Exception, psycopg2.DatabaseError) as error:
         print(error)
 
@@ -203,8 +203,8 @@ def insertFinancialAid(aid):
         cur.execute(postgres_insert_query, record_to_insert)
 
         conn.commit()
-        count = cur.rowcount
-        print(count, "Record inserted successfully into vendor")
+        # count = cur.rowcount
+        # print(count, "Record inserted successfully into vendor")
     except(Exception, psycopg2.DatabaseError) as error:
         print(error)
 
@@ -223,8 +223,8 @@ def insertBorrow(borrow):
         cur.execute(postgres_insert_query, record_to_insert)
 
         conn.commit()
-        count = cur.rowcount
-        print(count, "Record inserted successfully into vendor")
+        # count = cur.rowcount
+        # print(count, "Record inserted successfully into vendor")
     except(Exception, psycopg2.DatabaseError) as error:
         print(error)
 
@@ -243,8 +243,8 @@ def insertHall(hall):
         cur.execute(postgres_insert_query, record_to_insert)
 
         conn.commit()
-        count = cur.rowcount
-        print(count, "Record inserted successfully into vendor")
+        # count = cur.rowcount
+        # print(count, "Record inserted successfully into vendor")
     except(Exception, psycopg2.DatabaseError) as error:
         print(error)
 
@@ -253,7 +253,7 @@ def readRoomCSV():
     with open("./DATA/RoomData.csv", 'r') as file:
         csvreader = csv.reader(file)
         for row in csvreader:
-            print(row)
+            #print(row)
             insertRoom(row)
 
 def insertRoom(room):
@@ -263,28 +263,27 @@ def insertRoom(room):
         cur.execute(postgres_insert_query, record_to_insert)
 
         conn.commit()
-        count = cur.rowcount
-        print(count, "Record inserted successfully into vendor")
+        # count = cur.rowcount
+        # print(count, "Record inserted successfully into vendor")
     except(Exception, psycopg2.DatabaseError) as error:
         print(error)
 
 def readClubsCSV():
-    #with open("./MOCK_DATA.csv", 'r') as file:
-    with open("./DATA/StudentInfoData.csv", 'r') as file:
+    with open("./DATA/clubs.csv", 'r') as file:
         csvreader = csv.reader(file)
         for row in csvreader:
             # print(row)
-            insertStudent(row)
+            insertClubs(row)
 
 def insertClubs(clubs):
     try:
-        postgres_insert_query = """ INSERT INTO Clubs (ClubID, Name, ClubType, Budget, Coach, FacAdvisor, MeetingLoc, Contact, Weblink, Email, Active) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
+        postgres_insert_query = """ INSERT INTO Clubs (ClubID, Name, ClubType, Budget, Coach, FacAdvisor, MeetingLoc, Contact, Weblink, Email, Active) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
         record_to_insert = (clubs)
         cur.execute(postgres_insert_query, record_to_insert)
 
         conn.commit()
-        count = cur.rowcount
-        print(count, "Record inserted successfully into vendor")
+        # count = cur.rowcount
+        # print(count, "Record inserted successfully into vendor")
     except(Exception, psycopg2.DatabaseError) as error:
         print(error)
 
@@ -303,8 +302,8 @@ def insertMembership(member):
         cur.execute(postgres_insert_query, record_to_insert)
 
         conn.commit()
-        count = cur.rowcount
-        print(count, "Record inserted successfully into vendor")
+        # count = cur.rowcount
+        # print(count, "Record inserted successfully into vendor")
     except(Exception, psycopg2.DatabaseError) as error:
         print(error)
 
@@ -323,25 +322,20 @@ def insertLibrary(library):
         cur.execute(postgres_insert_query, record_to_insert)
 
         conn.commit()
-        count = cur.rowcount
-        print(count, "Record inserted successfully into vendor")
+        # count = cur.rowcount
+        # print(count, "Record inserted successfully into vendor")
     except(Exception, psycopg2.DatabaseError) as error:
         print(error) 
 
 
 def insertAll():
     readStudentCSV()
-    # readDegreeCSV()
-    # readDegreeReqCSV()
     readProductCSV()
     readStaffCSV()
     readContactCSV()
-    # readFinancialCSV()
-    # readBorrowCSV()
     readHallCSV()
     readRoomCSV()
-    # readClubsCSV()
-    # readMemberCSV()
+    readClubsCSV()
     readLibraryCSV()
     readCourseCSV()
 
