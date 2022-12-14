@@ -68,28 +68,14 @@ def printTranscript():
 
 
 def simulate():
-        sem = 1;
-        readStudentCSV()
-
-        #Now insert them into degree table
-        #get all of their LNums
-        postgres_select_query = """SELECT LNum FROM StudentInfo"""
-        cur.execute(postgres_select_query)
-        conn.commit()
-        students = cur.fetchall()
-        print("CourseID  Term  Status  Grade")
-        for LNum in students:
-                print(LNum)
-
-        #postgres_insert_query = """SELECT * FROM CoursesTaken WHERE LNum = %s""" 
-        #postgres_insert_query = """INSERT INTO CoursesTaken
-        #cur.execute(postgres_insert_query, LNum)
-        #conn.commit()
-        #courses = cur.fetchall()
-
-        #for row in studentInfo:
-                #for every 4:
-                        #postgres_insert_query = """INSERT INTO COURSES TAKEN""" 
+        for sem in range(8):
+                simulateCoursesTaken(sem)
+                if sem == 3:
+                        postgres_update_query = """UPDATE StudentInfo SET ClassTitle = 'Sophmore' WHERE ClassTitle = 'Freshman'"""
+                if sem == 5:
+                        postgres_update_query = """UPDATE StudentInfo SET ClassTitle = 'Junior' WHERE ClassTitle = 'Sophmore'"""
+                if sem == 7:
+                        postgres_update_query = """UPDATE StudentInfo SET ClassTitle = 'Senior' WHERE ClassTitle = 'Junior'"""
 
 def simulateCoursesTaken(sem):
         postgres_insert_query = """SELECT LNum, DegreeID FROM Degree""" 
@@ -146,3 +132,5 @@ def simulateCoursesTaken(sem):
                         newStudent = [row[0], row[1], courseIDs[i], TermTaken, Status, Requirement, Grade, Notes]
                         insertCoursesTaken(newStudent)
                         #degreeID = degreeID + 1
+
+
