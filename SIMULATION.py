@@ -27,7 +27,7 @@ def insertNewStudent():
     PhoneNum = input()
     print('Enter students address')
     Address = input()
-    print('Enter student Residence Hall (1-10)')
+    print('Enter student Residence Hall')
     ResidenceHallID = input()
     print('Enter student roomid')
     RoomID = input()
@@ -66,20 +66,6 @@ def printTranscript():
         for row in courses:
                 print(row[2],"    ", row[3], " ", row[4]," ", row[6])
 
-def insertStudentAid():
-        Scholarships = 60000,
-        PellGrant = 60000,
-        Loans = 1000,
-        WorkStudy = 2000,
-        postgres_insert_query = """SELECT LNum FROM StudentInfo""" 
-        cur.execute(postgres_insert_query)
-        conn.commit()
-        students = cur.fetchall()
-
-        for LNum in students:
-            newStudent = [LNum, Scholarships, PellGrant, Loans, WorkStudy]
-            insertFinancialAid(newStudent)
-
 
 def simulate():
         sem = 1;
@@ -104,4 +90,19 @@ def simulate():
         #for row in studentInfo:
                 #for every 4:
                         #postgres_insert_query = """INSERT INTO COURSES TAKEN""" 
-                
+
+def simulateCoursesTaken():
+        postgres_insert_query = """SELECT LNum, DegreeID FROM Degree""" 
+        postgres_select_query = """SELECT CourseID FROM Course"""
+        cur.execute(postgres_insert_query)
+        conn.commit()
+        students = cur.fetchall()
+        cur.execute(postgres_select_query)
+        conn.commit()
+        courseIDs = cur.fetchall()
+
+        for row in students:
+                for i in range(1,5):
+                        newStudent = [row[0], row[1], CourseId, TermTaken, Status, Requirement, Grade, Notes]
+                        insertCoursesTaken(newStudent)
+                        #degreeID = degreeID + 1
