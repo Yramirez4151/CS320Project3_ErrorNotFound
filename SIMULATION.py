@@ -54,7 +54,7 @@ def insertNewStudent():
     insertStudent(student)
     # print('FROM WHERE:')
     # table = input()
-
+    
 def printTranscript():
         print('Enter Student LNum')
         LNum = input()
@@ -65,3 +65,43 @@ def printTranscript():
         print("CourseID  Term  Status  Grade")
         for row in courses:
                 print(row[2],"    ", row[3], " ", row[4]," ", row[6])
+
+def insertStudentAid():
+        Scholarships = 60000,
+        PellGrant = 60000,
+        Loans = 1000,
+        WorkStudy = 2000,
+        postgres_insert_query = """SELECT LNum FROM StudentInfo""" 
+        cur.execute(postgres_insert_query)
+        conn.commit()
+        students = cur.fetchall()
+
+        for LNum in students:
+            newStudent = [LNum, Scholarships, PellGrant, Loans, WorkStudy]
+            insertFinancialAid(newStudent)
+
+
+def simulate():
+        sem = 1;
+        readStudentCSV()
+
+        #Now insert them into degree table
+        #get all of their LNums
+        postgres_select_query = """SELECT LNum FROM StudentInfo"""
+        cur.execute(postgres_select_query)
+        conn.commit()
+        students = cur.fetchall()
+        print("CourseID  Term  Status  Grade")
+        for LNum in students:
+                print(LNum)
+
+        #postgres_insert_query = """SELECT * FROM CoursesTaken WHERE LNum = %s""" 
+        #postgres_insert_query = """INSERT INTO CoursesTaken
+        #cur.execute(postgres_insert_query, LNum)
+        #conn.commit()
+        #courses = cur.fetchall()
+
+        #for row in studentInfo:
+                #for every 4:
+                        #postgres_insert_query = """INSERT INTO COURSES TAKEN""" 
+                
