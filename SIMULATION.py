@@ -54,3 +54,14 @@ def insertNewStudent():
     insertStudent(student)
     # print('FROM WHERE:')
     # table = input()
+
+def printTranscript():
+        print('Enter Student LNum')
+        LNum = input()
+        postgres_insert_query = """SELECT * FROM CoursesTaken WHERE LNum = %s""" 
+        cur.execute(postgres_insert_query, LNum)
+        conn.commit()
+        courses = cur.fetchall()
+        print("CourseID  Term  Status  Grade")
+        for row in courses:
+                print(row[2],"    ", row[3], " ", row[4]," ", row[6])
