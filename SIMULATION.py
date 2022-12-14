@@ -27,7 +27,7 @@ def insertNewStudent():
     PhoneNum = input()
     print('Enter students address')
     Address = input()
-    print('Enter student Residence Hall')
+    print('Enter student Residence Hall (1-10)')
     ResidenceHallID = input()
     print('Enter student roomid')
     RoomID = input()

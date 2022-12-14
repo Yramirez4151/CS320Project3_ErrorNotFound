@@ -16,11 +16,12 @@ def setup(tableNames):
 
 if __name__ == '__main__':
     tableNames = [ "StudentInfo", "Degree", "DegreeRequirements", "Course", "Product", "CoursesTaken", "Staff", "Contacts", "FinancialAid", "Borrow", "ResidenceHall", "Room", "Clubs", "Membership", "Library"]
-    #setup(tableNames)
+    setup(tableNames)
     # delete_tables(tableNames)
     # create_tables()
     # grant_perm()
     # insertNewStudent()
     # printTranscript()
-    #insertStudentAid()
+    insertStudentAid()
     insertDegreePerStudent()
+    insertDegreeREQPerStudent()

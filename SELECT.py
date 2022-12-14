@@ -41,3 +41,22 @@ def insertDegreePerStudent():
             newStudent = [LNum, CumulativeGPA, degreeID, dType, Major, Minor]
             insertDegree(newStudent)
             degreeID = degreeID + 1
+
+def insertDegreeREQPerStudent():
+        CurrCredits = 0
+        CredReq = 32
+        Notes = " "
+        TransferredCreds = 0
+        A_Standing = "Good"
+        EnrollmentStat = "Active"
+        DroppedCourses = " "
+        Advisor = "Pfaffmann"
+        Date_started = "FY2022"
+        postgres_insert_query = """SELECT DegreeID FROM Degree""" 
+        cur.execute(postgres_insert_query)
+        conn.commit()
+        degrees = cur.fetchall()
+
+        for pair in degrees:
+            newStudent = [pair, CurrCredits, CredReq, Notes, TransferredCreds, A_Standing, EnrollmentStat, DroppedCourses, Advisor, Date_started]
+            insertDegreeRequirements(newStudent)

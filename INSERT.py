@@ -330,6 +330,7 @@ def insertAll():
     readClubsCSV()
     readLibraryCSV()
     readCourseCSV()
-
-    cur.close()
-    conn.close()
+    #insertStudentAid()
+    # insertDegreePerStudent()
+    # cur.close()
+    # conn.close()
