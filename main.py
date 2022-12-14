@@ -22,4 +22,5 @@ if __name__ == '__main__':
     # grant_perm()
     # insertNewStudent()
     # printTranscript()
-    insertStudentAid()
+    #insertStudentAid()
+    insertDegreePerStudent()

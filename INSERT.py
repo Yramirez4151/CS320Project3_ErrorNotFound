@@ -58,7 +58,7 @@ def readDegreeCSV():
 
 def insertDegree(row):
     try:
-        postgres_insert_query = """ INSERT INTO Degree (LNum, CumulativeGPA, DegreeID, dType, ClassTitle, Major, Minor) VALUES (%s, %s, %s, %s, %s, %s, %s)"""
+        postgres_insert_query = """ INSERT INTO Degree (LNum, CumulativeGPA, DegreeID, dType, Major, Minor) VALUES (%s, %s, %s, %s, %s, %s)"""
         record_to_insert = (row)
         cur.execute(postgres_insert_query, record_to_insert)
 
