@@ -205,11 +205,10 @@ def create_tables():
         """
         CREATE TABLE Membership(
             LNum                    INTEGER UNIQUE NOT NULL,
-            ClubID                  INTEGER UNIQUE NOT NULL,
-            MembershipInfo          VARCHAR(100),
+            ClubID                  INTEGER NOT NULL,
             Role                    VARCHAR(20),
-            Active                  VARCHAR(10),
-            Forms                   VARCHAR(50),
+            Active                  BOOLEAN,
+            Forms                   BOOLEAN,
             PRIMARY KEY(LNum, ClubID),
             FOREIGN KEY(LNum)
                 REFERENCES StudentInfo(LNum), 

@@ -60,3 +60,18 @@ def insertDegreeREQPerStudent():
         for pair in degrees:
             newStudent = [pair, CurrCredits, CredReq, Notes, TransferredCreds, A_Standing, EnrollmentStat, DroppedCourses, Advisor, Date_started]
             insertDegreeRequirements(newStudent)
+
+def insertClubMembership():
+        ClubID = 1
+        Role = "Member"
+        Active = "TRUE"
+        Forms = "TRUE"
+        postgres_insert_query = """SELECT LNum FROM StudentInfo""" 
+        cur.execute(postgres_insert_query)
+        conn.commit()
+        students = cur.fetchall()
+
+        for LNum in students:
+            newStudent = [LNum, ClubID, Role, Active, Forms]
+            insertMembership(newStudent)
+

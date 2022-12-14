@@ -289,7 +289,7 @@ def readMemberCSV():
 
 def insertMembership(member):
     try:
-        postgres_insert_query = """ INSERT INTO Membership (LNum, ClubID, MembershipInfo, Role, Active, Forms) VALUES (%s,%s,%s,%s,%s,%s)"""
+        postgres_insert_query = """ INSERT INTO Membership (LNum, ClubID, Role, Active, Forms) VALUES (%s,%s,%s,%s,%s)"""
         record_to_insert = (member)
         cur.execute(postgres_insert_query, record_to_insert)
 
@@ -330,7 +330,5 @@ def insertAll():
     readClubsCSV()
     readLibraryCSV()
     readCourseCSV()
-    #insertStudentAid()
-    # insertDegreePerStudent()
     # cur.close()
     # conn.close()
