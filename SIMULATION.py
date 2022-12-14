@@ -54,7 +54,7 @@ def insertNewStudent():
     insertStudent(student)
     # print('FROM WHERE:')
     # table = input()
-    
+
 def printTranscript():
         print('Enter Student LNum')
         LNum = input()
@@ -65,9 +65,3 @@ def printTranscript():
         print("CourseID  Term  Status  Grade")
         for row in courses:
                 print(row[2],"    ", row[3], " ", row[4]," ", row[6])
-
-def simulate():
-        sem = 1;
-        readStudentCSV()
-        
-

@@ -188,14 +188,6 @@ def insertContacts(row):
     except(Exception, psycopg2.DatabaseError) as error:
         print(error)
 
-def readFinancialCSV():
-    #with open("./MOCK_DATA.csv", 'r') as file:
-    with open("./DATA/StudentInfoData.csv", 'r') as file:
-        csvreader = csv.reader(file)
-        for row in csvreader:
-            # print(row)
-            insertStudent(row)
-
 def insertFinancialAid(aid):
     try:
         postgres_insert_query = """ INSERT INTO FinancialAid (LNum, Scholarships, PellGrant, Loans, WorkStudy) VALUES (%s,%s,%s,%s,%s)"""
