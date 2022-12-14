@@ -14,7 +14,7 @@ cur = conn.cursor()
 #read CSV files and insert
 def readStudentCSV():
     #with open("./MOCK_DATA.csv", 'r') as file:
-    with open("./DATA/StudentInfoData.csv", 'r') as file:
+    with open("./DATA/Freshman.csv", 'r') as file:
         csvreader = csv.reader(file)
         for row in csvreader:
             # print(row)
