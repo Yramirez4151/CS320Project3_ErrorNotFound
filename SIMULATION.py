@@ -54,3 +54,8 @@ def insertNewStudent():
     insertStudent(student)
     # print('FROM WHERE:')
     # table = input()
+
+def simulate():
+        sem = 1;
+        
+
