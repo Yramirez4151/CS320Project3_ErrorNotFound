@@ -91,7 +91,7 @@ def simulate():
                 #for every 4:
                         #postgres_insert_query = """INSERT INTO COURSES TAKEN""" 
 
-def simulateCoursesTaken():
+def simulateCoursesTaken(sem):
         postgres_insert_query = """SELECT LNum, DegreeID FROM Degree""" 
         postgres_select_query = """SELECT CourseID FROM Course"""
         cur.execute(postgres_insert_query)
@@ -101,8 +101,48 @@ def simulateCoursesTaken():
         conn.commit()
         courseIDs = cur.fetchall()
 
+        Status = "Enrolled"
+        Requirement = ""
+        Grade = "A"
+        Notes = "You're killing this college thing :)"
+
+        if sem == 1:
+                x = 1
+                y = 5
+                TermTaken = "Fall 1"
+        elif sem == 2:
+                x = 5
+                y = 9
+                TermTaken = "Spring 1"
+        elif sem == 3:
+                x = 9
+                y = 13
+                TermTaken = "Fall 2"
+        elif sem == 4:
+                x = 13
+                y = 17
+                TermTaken = "Spring 2"
+        elif sem == 5:
+                x = 17
+                y = 21
+                TermTaken = "Fall 3"
+        elif sem == 6:
+                x = 21
+                y = 25
+                TermTaken = "Spring 3"
+        elif sem == 7:
+                x = 25
+                y = 29
+                TermTaken = "Fall 4"
+        elif sem == 8:
+                x = 29
+                y = 33
+                TermTaken = "Spring 4"
+
+        
+
         for row in students:
-                for i in range(1,5):
-                        newStudent = [row[0], row[1], CourseId, TermTaken, Status, Requirement, Grade, Notes]
+                for i in range(x,y):
+                        newStudent = [row[0], row[1], courseIDs[i], TermTaken, Status, Requirement, Grade, Notes]
                         insertCoursesTaken(newStudent)
                         #degreeID = degreeID + 1
