@@ -57,5 +57,6 @@ def insertNewStudent():
 
 def simulate():
         sem = 1;
+        readStudentCSV()
         
 
