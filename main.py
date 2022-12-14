@@ -15,11 +15,10 @@ def setup(tableNames):
     insertStudentAid()
     insertDegreePerStudent()
     insertDegreeREQPerStudent()
-
+    insertClubMembership()
 
 if __name__ == '__main__':
     tableNames = [ "StudentInfo", "Degree", "DegreeRequirements", "Course", "Product", "CoursesTaken", "Staff", "Contacts", "FinancialAid", "Borrow", "ResidenceHall", "Room", "Clubs", "Membership", "Library"]
     #setup(tableNames)
     # insertNewStudent()
     # printTranscript()
-    insertClubMembership()
