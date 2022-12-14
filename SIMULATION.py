@@ -19,7 +19,7 @@ def insertNewStudent():
     MName = input()
     print('Enter student Last Name')
     LName = input()
-    ClassTitle = "First Year" #default
+    ClassTitle = "Freshman" #default
     print('Enter student graduation year')
     GradYear = input()
     Email = LName + FName[0] + "@lafayette.edu"
