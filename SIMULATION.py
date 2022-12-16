@@ -3,7 +3,7 @@ from INSERT import *
 
 conn = psycopg2.connect(
         port = "3200",
-        host="139.147.192.196",
+        host="139.147.231.99",
         database="errornotfounddb",
         user="yesenia",
         password="")
@@ -11,51 +11,55 @@ conn = psycopg2.connect(
 cur = conn.cursor()
 
 def insertNewStudent():
-    print('Enter new Student LNum')
-    LNum = input()
-    print('Enter student First Name')
-    FName = input()
-    print('Enter student Middle Name')
-    MName = input()
-    print('Enter student Last Name')
-    LName = input()
-    ClassTitle = "Freshman" #default
-    print('Enter student graduation year')
-    GradYear = input()
-    Email = LName + FName[0] + "@lafayette.edu"
-    print('Enter student phone number')
-    PhoneNum = input()
-    print('Enter students address')
-    Address = input()
-    print('Enter student Residence Hall')
-    ResidenceHallID = input()
-    print('Enter student roomid')
-    RoomID = input()
-    print('Enter student date of birth')
-    DOB = input()
-    print('Enter student enrollment status')
-    Enrollmentstatus = input()
-    print('Enter student POBox')
-    POBox = input()
-    print('Did student complete FERPA? enter TRUE if yes, FALSE if no')
-    FERPA = input()
-    print('Enter student SSN')
-    SSN = input()
-    print('Enter student preferred name')
-    PreferredName = input()
-    print('Enter student meal plan. (7,14 or 24)')
-    MealPlan = input()
-    Notes = " " #default
-    print('Enter student unique employee ID')
-    EmployeeID = input()
-    print('Is student in EXCEL? enter TRUE if yes, FALSE if no')
-    ExcelStudent = input()
-    student = [LNum, FName, MName, LName, ClassTitle, GradYear, Email, PhoneNum, Address, ResidenceHallID, RoomID, DOB, Enrollmentstatus, POBox, FERPA, SSN, PreferredName, MealPlan, Notes, EmployeeID, ExcelStudent]
-    insertStudent(student)
-    # print('FROM WHERE:')
-    # table = input()
+        """Uses user input to add a new student into the StudentInfo table assuming you wouldn't insert a upperclassman"""
+
+        print('Enter new Student LNum')
+        LNum = input()
+        print('Enter student First Name')
+        FName = input()
+        print('Enter student Middle Name')
+        MName = input()
+        print('Enter student Last Name')
+        LName = input()
+        ClassTitle = "Freshman" #default
+        print('Enter student graduation year')
+        GradYear = input()
+        Email = LName + FName[0] + "@lafayette.edu"
+        print('Enter student phone number')
+        PhoneNum = input()
+        print('Enter students address')
+        Address = input()
+        print('Enter student Residence Hall')
+        ResidenceHallID = input()
+        print('Enter student roomid')
+        RoomID = input()
+        print('Enter student date of birth')
+        DOB = input()
+        print('Enter student enrollment status')
+        Enrollmentstatus = input()
+        print('Enter student POBox')
+        POBox = input()
+        print('Did student complete FERPA? enter TRUE if yes, FALSE if no')
+        FERPA = input()
+        print('Enter student SSN')
+        SSN = input()
+        print('Enter student preferred name')
+        PreferredName = input()
+        print('Enter student meal plan. (7,14 or 24)')
+        MealPlan = input()
+        Notes = " " #default
+        print('Enter student unique employee ID')
+        EmployeeID = input()
+        print('Is student in EXCEL? enter TRUE if yes, FALSE if no')
+        ExcelStudent = input()
+        student = [LNum, FName, MName, LName, ClassTitle, GradYear, Email, PhoneNum, Address, ResidenceHallID, RoomID, DOB, Enrollmentstatus, POBox, FERPA, SSN, PreferredName, MealPlan, Notes, EmployeeID, ExcelStudent]
+        insertStudent(student)
+        # print('FROM WHERE:')
+        # table = input()
     
 def printTranscript():
+        """ Prints a specific student transcript into terminal """
+
         print('Enter Student LNum')
         LNum = input()
         postgres_insert_query = """SELECT * FROM CoursesTaken WHERE LNum = %s""" 
@@ -68,6 +72,8 @@ def printTranscript():
 
 
 def simulate():
+        """ updates student class title based on number of experienced semesters """
+
         for sem in range(8):
                 simulateCoursesTaken(sem)
                 if sem == 3:
@@ -78,6 +84,8 @@ def simulate():
                         postgres_update_query = """UPDATE StudentInfo SET ClassTitle = 'Senior' WHERE ClassTitle = 'Junior'"""
 
 def simulateCoursesTaken(sem):
+        """ updates student's transcript in CoursesTaken based on the courses takens in a semester  """
+
         postgres_insert_query = """SELECT LNum, DegreeID FROM Degree""" 
         postgres_select_query = """SELECT CourseID FROM Course"""
         cur.execute(postgres_insert_query)
@@ -131,6 +139,3 @@ def simulateCoursesTaken(sem):
                 for i in range(x,y):
                         newStudent = [row[0], row[1], courseIDs[i], TermTaken, Status, Requirement, Grade, Notes]
                         insertCoursesTaken(newStudent)
-                        #degreeID = degreeID + 1
-
-

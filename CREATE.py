@@ -2,13 +2,13 @@ import psycopg2
 
 conn = psycopg2.connect(
         port = "3200",
-        host="139.147.192.196",
+        host="139.147.231.99",
         database="errornotfounddb",
         user="yesenia",
         password="")
 
 def create_tables():
-    """ create tables in the PostgreSQL database"""
+    """Creates all 15 tables needed for the database into the ERRORNOT FOUND SERVER"""
     commands = (
         """
         CREATE TABLE StudentInfo (

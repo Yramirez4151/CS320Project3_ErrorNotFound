@@ -3,7 +3,7 @@ import psycopg2
 
 conn = psycopg2.connect(
         port = "3200",
-        host="139.147.192.196",
+        host="139.147.231.99",
         database="errornotfounddb",
         user="yesenia",
         password="")
@@ -12,6 +12,8 @@ tableNames = [ "StudentInfo", "Degree", "DegreeRequirements", "Course", "Product
 users = ["joshuagarcia", "pc", "huico"]
 
 def grant_perm():
+    """Grants all the users in the ERRORNOTFOUND server access to select, insert, update and delete"""
+
     cur = conn.cursor()
     for x in tableNames:
         for u in users:
