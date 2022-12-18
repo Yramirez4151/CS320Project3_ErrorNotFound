@@ -84,3 +84,30 @@ def insertClubMembership():
             newStudent = [LNum, ClubID, Role, Active, Forms]
             insertMembership(newStudent)
 
+# def insertNewBorrow():
+#         print('Enter LNum')
+#         LNum = input()
+
+#         print('Enter Library Name')
+#         Lib_name = input()
+        
+#         print('Enter ProductID')
+#         ProductID = input()
+#                         #    [0,1,2,3,-,5,6,-,8,9]
+#         print('Date Borrowed (yyyy-mm-dd)')
+#         Date_Borrowed = input()
+
+#         #Set Due_Date 2 months in advance
+#         m = int(Date_Borrowed[5:7])
+#         yr = int(Date_Borrowed[0:4])
+#         m += 2
+#         if m > 12:
+#                 m = m%12
+#                 yr += 1
+        
+#         Due_Date = str(yr) + "-" + str(m) + "-" + Date_Borrowed[8:10]
+
+#         Date_Returned = " "  
+
+#         newBorrow = [LNum, Lib_name, ProductID, Date_Borrowed, Due_Date, Date_Returned]
+#         insertBorrow(newBorrow)

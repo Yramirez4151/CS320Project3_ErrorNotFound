@@ -33,7 +33,7 @@ def insertNewStudent():
         ResidenceHallID = input()
         print('Enter student roomid')
         RoomID = input()
-        print('Enter student date of birth')
+        print('Enter student date of birth (mm/dd/yyy')
         DOB = input()
         print('Enter student enrollment status')
         Enrollmentstatus = input()
@@ -62,8 +62,8 @@ def printTranscript():
 
         print('Enter Student LNum')
         LNum = input()
-        postgres_insert_query = """SELECT * FROM CoursesTaken WHERE LNum = %s""" 
-        cur.execute(postgres_insert_query, LNum)
+        postgres_insert_query = """SELECT * FROM CoursesTaken WHERE LNum = %s""" %(LNum)
+        cur.execute(postgres_insert_query)
         conn.commit()
         courses = cur.fetchall()
         print("CourseID  Term  Status  Grade")
@@ -130,10 +130,8 @@ def simulateCoursesTaken(sem):
                 TermTaken = "Fall 4"
         elif sem == 8:
                 x = 29
-                y = 33
+                y = 32
                 TermTaken = "Spring 4"
-
-        
 
         for row in students:
                 for i in range(x,y):
